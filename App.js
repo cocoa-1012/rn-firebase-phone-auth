@@ -20,7 +20,11 @@ const App = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen name="PhoneNumber" component={PhoneNumber} />
+        <Stack.Screen
+          name="PhoneNumber"
+          component={PhoneNumber}
+          options={{title: 'Continue with Phone'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
