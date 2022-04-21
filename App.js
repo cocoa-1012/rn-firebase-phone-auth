@@ -1,15 +1,13 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {useColorScheme} from 'react-native';
-import {PhoneNumber} from './src/Auth/PhoneNumber';
+import {PhoneAuth} from './src/Auth';
 import {Home} from './src/Home/Home';
+import {SignIn} from './src/SignIn/SignIn';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -21,9 +19,19 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="PhoneNumber"
-          component={PhoneNumber}
-          options={{title: 'Continue with Phone'}}
+          name="Auth"
+          component={PhoneAuth}
+          // options={{title: 'Continue with Phone'}}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

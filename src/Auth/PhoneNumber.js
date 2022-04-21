@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
   Image,
   ScrollView,
   StyleSheet,
@@ -11,7 +10,7 @@ import {
 import PhoneInput from 'react-native-phone-number-input';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-export const PhoneNumber = () => {
+export const PhoneNumber = props => {
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [value, setValue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
@@ -27,10 +26,12 @@ export const PhoneNumber = () => {
             style={styles.logo}
             source={require('../assets/images/phone/phone_number.jpg')}
           />
+          <Text style={styles.text1}>Continue with Phone</Text>
           <Text style={styles.text}>
-            You'll receive a 4 digit code to verify next.
+            You'll receive a 6 digit code to verify.
           </Text>
           <PhoneInput
+            style={styles.inputPhone}
             defaultValue={value}
             defaultCode="CM"
             layout="second"
@@ -46,7 +47,7 @@ export const PhoneNumber = () => {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              Alert.alert('Alert Title');
+              props.onSubmit(formattedValue);
             }}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>
@@ -71,6 +72,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
   },
+  text1: {
+    marginTop: 60,
+    fontSize: 28,
+    color: '#000000',
+  },
   text: {
     fontSize: 20,
     textAlign: 'center',
@@ -84,15 +90,19 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   button: {
-    backgroundColor: '#ffdc3d',
+    backgroundColor: '#2ab6b6',
     margin: 40,
-    padding: 15,
+    padding: 10,
     borderRadius: 20,
     width: '80%',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#000',
-    fontSize: 18,
+    color: '#fff',
+    fontSize: 20,
+  },
+  inputPhone: {
+    fontSize: 32,
+    backgroundColor: 'red',
   },
 });

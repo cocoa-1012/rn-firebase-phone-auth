@@ -5,46 +5,40 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-export const Home = ({navigation}) => {
-  const [phoneNumber, setPhoneNumber] = useState(null);
 
+export const SignIn = ({navigation}) => {
+  const [text, onChangeText] = useState('');
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.screen}>
           <Image
             style={styles.logo}
-            source={require('../assets/images/logo.png')}
+            source={require('../assets/images/sign/signin.png')}
           />
-          <Text style={styles.text1}>Hey! Welcome</Text>
-          <Text style={styles.text2}>
-            You can save your money daily, weekly or monthly
-          </Text>
+          <Text style={styles.text1}>Signin</Text>
+          <Text style={styles.text2}>Create your bank account in easy way</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="Your Phone Number"
+          />
+          <TextInput
+            style={styles.input}
+            // onChangeText={onChangeText}
+            // value={text}
+            placeholder="Your Password"
+          />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('Auth')}>
-            <Text style={styles.buttonText}>Get Started</Text>
+            onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
-          <Text style={styles.text3}>I already have an account</Text>
-          <Image
-            style={styles.tinyLogo}
-            source={{
-              uri: 'https://reactnative.dev/img/tiny_logo.png',
-            }}
-          />
-          <View style={styles.flagGroup}>
-            <Image
-              style={styles.langImg}
-              source={require('../assets/images/flags/us.png')}
-            />
-            <Image
-              style={styles.langImg}
-              source={require('../assets/images/flags/france.png')}
-            />
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -63,6 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     width: 200,
     height: 200,
+    borderRadius: 100,
   },
   text1: {
     fontSize: 28,
@@ -89,6 +84,13 @@ const styles = StyleSheet.create({
     margin: 15,
     width: 32,
     height: 20,
+  },
+  input: {
+    height: 40,
+    width: '80%',
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
   button: {
     backgroundColor: '#2ab6b6',

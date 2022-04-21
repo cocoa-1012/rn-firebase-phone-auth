@@ -1,16 +1,38 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-export default function Authenticated() {
+export const Authenticated = ({navigation}) => {
   return (
-    <View style={styles.screen}>
-      <Text style={styles.text}>You're Logged in</Text>
-      <View style={{ marginTop: 30 }}>
-        <Button title="Signout" />
-      </View>
-    </View>
+    <SafeAreaView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View style={styles.screen}>
+          <Image
+            style={styles.logo}
+            source={require('../assets/images/phone/phone_success.png')}
+          />
+          <Text style={styles.text1}>Verification Successful</Text>
+          <Text style={styles.text2}>
+            Congress! you are verified member. You can login your registered
+            phone number and password to gain your account
+          </Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('SignIn')}>
+            <Text style={styles.buttonText}>Sign in Now</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screen: {
@@ -29,5 +51,37 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    borderRadius: 150,
+    marginTop: 50,
+    marginBottom: 30,
+  },
+  text1: {
+    marginTop: 60,
+    fontSize: 28,
+    color: '#000000',
+  },
+  text2: {
+    fontSize: 20,
+    padding: 25,
+    margin: 20,
+    lineHeight: 32,
+    textAlign: 'center',
+    color: '#555',
+  },
+  button: {
+    backgroundColor: '#2ab6b6',
+    margin: 40,
+    padding: 10,
+    borderRadius: 20,
+    width: '80%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20,
   },
 });

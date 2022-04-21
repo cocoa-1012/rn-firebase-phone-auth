@@ -1,41 +1,70 @@
 {
   "project_info": {
-    "project_number": "791192324988",
-    "project_id": "phoneauth-7898a",
-    "storage_bucket": "phoneauth-7898a.appspot.com"
+    "project_number": "297260320844",
+    "project_id": "saving-plan-7ef7c",
+    "storage_bucket": "saving-plan-7ef7c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:791192324988:android:292f4c0a1522f4d45ab2f9",
+        "mobilesdk_app_id": "1:297260320844:android:e56c46571749adf5734ce9",
         "android_client_info": {
-          "package_name": "com.awesomeproject"
+          "package_name": "com.savingmoney"
         }
       },
       "oauth_client": [
         {
-          "client_id": "791192324988-7tlp041hpem8m57tt8kvc8pspdjbk7bh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.awesomeproject",
-            "certificate_hash": "3e3d4d437d9771b72b23664a90a930ea9b3c9964"
-          }
-        },
-        {
-          "client_id": "791192324988-8dj5mqt8kvbck7s9ih5mhabvb713sutv.apps.googleusercontent.com",
+          "client_id": "297260320844-at7r2b4pqmdjldehpbauk78v94gmj0ch.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCxTEIW-xinGLBwNB4EU5RhrY_j4s-NQ4I"
+          "current_key": "AIzaSyDVClpZVieJT6d9GNI3HlX7xZmaTuQEcP0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "791192324988-8dj5mqt8kvbck7s9ih5mhabvb713sutv.apps.googleusercontent.com",
+              "client_id": "297260320844-at7r2b4pqmdjldehpbauk78v94gmj0ch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297260320844:android:878f1e1b9af819be734ce9",
+        "android_client_info": {
+          "package_name": "com.savingplan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297260320844-7osemuvtfeak3oke96qfk548snq3eks6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.savingplan",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "297260320844-at7r2b4pqmdjldehpbauk78v94gmj0ch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVClpZVieJT6d9GNI3HlX7xZmaTuQEcP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297260320844-at7r2b4pqmdjldehpbauk78v94gmj0ch.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
