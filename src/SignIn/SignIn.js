@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import firestore from '@react-native-firebase/firestore';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -11,7 +12,44 @@ import {
 } from 'react-native';
 
 export const SignIn = ({navigation}) => {
-  const [text, onChangeText] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [dataList, setDataList] = useState();
+  const [canLog, setCanLog] = useState(false);
+  const getInfo = async () => {
+    console.log('Getinfo started');
+    firestore()
+      .collection('Users')
+      .get()
+      .then(querySnapshot => {
+        let tt = [];
+        console.log('Total users: ', querySnapshot.size);
+
+        querySnapshot.forEach(documentSnapshot => {
+          tt.push(documentSnapshot.data());
+          console.log('tt: ', documentSnapshot.id, documentSnapshot.data());
+        });
+        setDataList(tt);
+        console.log('get info datalist', tt);
+      });
+  };
+
+  const signIn = () => {
+    console.log('clicked signin button', dataList);
+    if (dataList) {
+      Object.values(dataList).map(item =>
+        item.phoneNumber == phoneNumber && item.password == password
+          ? // ? setCanLog(true)
+            navigation.navigate('PersonalGoal')
+          : console.log('SFS'),
+      );
+      console.log('Is include', canLog);
+    }
+  };
+  useEffect(() => {
+    getInfo();
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -24,19 +62,17 @@ export const SignIn = ({navigation}) => {
           <Text style={styles.text2}>Create your bank account in easy way</Text>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
+            onChangeText={setPhoneNumber}
+            value={phoneNumber}
             placeholder="Your Phone Number"
           />
           <TextInput
             style={styles.input}
-            // onChangeText={onChangeText}
-            // value={text}
+            onChangeText={setPassword}
+            value={password}
             placeholder="Your Password"
           />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.button} onPress={() => signIn()}>
             <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
         </View>

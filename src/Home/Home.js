@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   SafeAreaView,
@@ -9,8 +9,6 @@ import {
   View,
 } from 'react-native';
 export const Home = ({navigation}) => {
-  const [phoneNumber, setPhoneNumber] = useState(null);
-
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -19,7 +17,7 @@ export const Home = ({navigation}) => {
             style={styles.logo}
             source={require('../assets/images/logo.png')}
           />
-          <Text style={styles.text1}>Hey! Welcome</Text>
+          <Text style={styles.text1}>Heyasa! Welcome</Text>
           <Text style={styles.text2}>
             You can save your money daily, weekly or monthly
           </Text>
@@ -28,7 +26,9 @@ export const Home = ({navigation}) => {
             onPress={() => navigation.navigate('Auth')}>
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
-          <Text style={styles.text3}>I already have an account</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text style={styles.text3}>I already have an account</Text>
+          </TouchableOpacity>
           <Image
             style={styles.tinyLogo}
             source={{

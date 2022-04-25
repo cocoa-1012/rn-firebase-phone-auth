@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StyleSheet,
@@ -10,13 +11,12 @@ import {
 import PhoneInput from 'react-native-phone-number-input';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-export const PhoneNumber = props => {
-  const [phoneNumber, setPhoneNumber] = useState(null);
+export const PhoneNumber = ({onSubmit, phoneNumber, setPhoneNumber}) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
-
   useEffect(() => {
-    console.log('aaaa', phoneNumber, formattedValue);
+    setIsLoading(false);
   });
   return (
     <SafeAreaView>
@@ -38,6 +38,7 @@ export const PhoneNumber = props => {
             onChangeText={setPhoneNumber}
             onChangeFormattedText={text => {
               setFormattedValue(text);
+              setPhoneNumber(text);
             }}
             placeholder="Phone Number"
             disableArrowIcon
@@ -47,9 +48,16 @@ export const PhoneNumber = props => {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              props.onSubmit(formattedValue);
+              onSubmit(formattedValue);
+              setIsLoading(true);
             }}>
-            <Text style={styles.buttonText}>Continue</Text>
+            <Text style={styles.buttonText}>
+              {isLoading ? (
+                <ActivityIndicator size="large" color="yellow" />
+              ) : (
+                'Continue'
+              )}
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

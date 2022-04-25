@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-export const Authenticated = ({navigation}) => {
+export const Authenticated = ({navigation, signOut}) => {
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -25,9 +25,12 @@ export const Authenticated = ({navigation}) => {
           </Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('SignIn')}>
-            <Text style={styles.buttonText}>Sign in Now</Text>
+            onPress={() => navigation.navigate('CreatePwd')}>
+            <Text style={styles.buttonText}>Create Account</Text>
           </TouchableOpacity>
+          {/* <Text style={styles.text3} onPress={() => signOut()}>
+            Sign out
+          </Text> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -68,6 +71,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 25,
     margin: 20,
+    lineHeight: 32,
+    textAlign: 'center',
+    color: '#555',
+  },
+  text3: {
+    fontSize: 20,
+    padding: 25,
     lineHeight: 32,
     textAlign: 'center',
     color: '#555',

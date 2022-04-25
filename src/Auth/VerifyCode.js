@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {
-  Button,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {
@@ -16,7 +16,7 @@ import {
 
 const CELL_COUNT = 6;
 
-export const VerifyCode = ({onSubmit}) => {
+export const VerifyCode = ({onSubmit, signIn, phoneNumber}) => {
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -53,13 +53,17 @@ export const VerifyCode = ({onSubmit}) => {
           />
           <View style={styles.resend}>
             <Text style={styles.text3}>I didn't receive code.</Text>
-            <Text style={styles.text4}>&nbsp;Resend code.</Text>
+            <TouchableOpacity>
+              <Text style={styles.text4} onPress={() => signIn(phoneNumber)}>
+                &nbsp;Resend code.
+              </Text>
+            </TouchableOpacity>
           </View>
-          <Button
-            color="#2ab6b6"
-            title="Confirm OTP"
-            onPress={() => onSubmit(value)}
-          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => onSubmit(value)}>
+            <Text style={styles.buttonText}>Confirm OTP</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -126,5 +130,17 @@ const styles = StyleSheet.create({
   },
   focusCell: {
     borderColor: '#000',
+  },
+  button: {
+    backgroundColor: '#2ab6b6',
+    margin: 40,
+    padding: 10,
+    borderRadius: 20,
+    width: '80%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20,
   },
 });
